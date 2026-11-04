@@ -438,6 +438,12 @@ func runCheck(auto bool) {
 			ui.status = "Эта версия GTA не подходит для SA-MP. Нужна GTA San Andreas версии 1.0 US."
 		})
 		return
+	case GameIncomplete:
+		ui.set(func() {
+			ui.phase = phBadVersion
+			ui.status = "В этой папке неполная GTA (нет звука или моделей). Выбери папку с полностью установленной игрой."
+		})
+		return
 	case GameNoSamp:
 		ui.set(func() {
 			ui.phase = phNeedSamp

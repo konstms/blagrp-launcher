@@ -7,7 +7,7 @@ import (
 	"regexp"
 )
 
-const Version = "1.0.0"
+const Version = "1.0.1"
 
 const (
 	ServerAddr  = "87.228.5.28:7777"
@@ -56,6 +56,7 @@ const (
 	GameOK GameCheck = iota
 	GameMissing
 	GameBadVersion
+	GameIncomplete
 	GameNoSamp
 )
 
@@ -69,6 +70,12 @@ func checkGame(dir string) GameCheck {
 	}
 	if !goodExeSizes[fi.Size()] {
 		return GameBadVersion
+	}
+	// Папка должна быть полной игрой, а не только exe.
+	for _, f := range []string{"eax.dll", "ogg.dll", "vorbis.dll", "models/gta3.img", "models/gta_int.img", "audio/SFX/GENRL", "data/handling.cfg"} {
+		if _, err := os.Stat(filepath.Join(dir, filepath.FromSlash(f))); err != nil {
+			return GameIncomplete
+		}
 	}
 	if _, err := os.Stat(filepath.Join(dir, "samp.dll")); err != nil {
 		return GameNoSamp
