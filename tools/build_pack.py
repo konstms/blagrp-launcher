@@ -4,7 +4,7 @@ GAME, OUT = sys.argv[1], sys.argv[2]
 INCLUDE = [
   "modloader.asi", "modloader/modloader.ini", "modloader/.data/**",
   "modloader/V_idlewood/**", "modloader/gai/**", "modloader/store_24_7/**", "modloader/hospital_fix/**",
-  "modloader/RealVision/**", "modloader/Trees_Birch/**", "modloader/HD_Vegetation/**",
+  "modloader/RealVision/**", "modloader/Trees_Birch/**", "modloader/HD_Vegetation/**", "modloader/BlagRP_Cars/**",
   "CLEO.asi", "cleo/*.cleo", "cleo/no_stat_popups.cs",
   "SilentPatchSA.asi", "SilentPatchSA.ini", "neo/*", "stream.ini", "data/gta.dat",
   "models/grass/*", "vorbisFile.dll", "scripts/global.ini",
