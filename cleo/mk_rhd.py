@@ -10,9 +10,17 @@ op(0x0001,0)
 IF(); op(0x0256,PCHAR); op(0x004D,J("TOP"))
 IF(); op(0x00DF,PACTOR); op(0x004D,J("FOOT"))
 op(0x03C0,PACTOR,L(0))
-op(0x00D6,20+len(MODELS)-1 if len(MODELS)>1 else 0)
-for m in MODELS: op(0x0137,L(0),m)
-op(0x004D,J("TOP"))
+grp=[MODELS[i:i+8] for i in range(0,len(MODELS),8)]
+for gi,g in enumerate(grp):
+    lab("G%d"%gi)
+    op(0x00D6,20+len(g)-1 if len(g)>1 else 0)
+    for m in g: op(0x0137,L(0),m)
+    if gi<len(grp)-1:
+        op(0x004D,J("G%d"%(gi+1)))
+        op(0x0002,J("OK"))
+    else:
+        op(0x004D,J("TOP"))
+lab("OK")
 op(0x046C,L(0),L(8))
 IF(); op(0x003C,PACTOR,L(8)); op(0x004D,J("TOP"))
 KEY(); op(0x004D,J("TOP"))
