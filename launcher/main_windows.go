@@ -484,6 +484,9 @@ func runCheck(auto bool) {
 			ui.plan = plan
 			ui.progress = -1
 			ui.status = "Сборка актуальна. Можно играть."
+			if m.Build > 0 {
+				ui.status = fmt.Sprintf("Установлена актуальная сборка №%d (от %s). Можно играть.", m.Build, m.Built)
+			}
 		})
 		return
 	}
@@ -495,6 +498,9 @@ func runCheck(auto bool) {
 			ui.status = fmt.Sprintf("Нужно скачать сборку сервера: %s. Оригинальные файлы игры сохранятся в _blagrp_backup.", mb(plan.Bytes))
 		} else {
 			ui.status = fmt.Sprintf("Вышло обновление сборки: %s.", mb(plan.Bytes))
+			if m.Build > 0 {
+				ui.status = fmt.Sprintf("Вышла сборка №%d (от %s): скачать %s.", m.Build, m.Built, mb(plan.Bytes))
+			}
 		}
 	})
 	// Небольшие обновления ставим сразу.

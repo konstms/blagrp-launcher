@@ -25,6 +25,8 @@ import (
 // Манифест сборки, лежит в ветке pack: manifest.json.
 type Manifest struct {
 	Version  int            `json:"version"`
+	Build    int            `json:"build"`
+	Built    string         `json:"built"`
 	Server   string         `json:"server"`
 	Launcher LauncherInfo   `json:"launcher"`
 	Files    []ManifestFile `json:"files"`

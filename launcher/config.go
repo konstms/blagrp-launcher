@@ -7,7 +7,7 @@ import (
 	"regexp"
 )
 
-const Version = "1.0.1"
+const Version = "1.0.2"
 
 const (
 	ServerAddr  = "87.228.5.28:7777"
